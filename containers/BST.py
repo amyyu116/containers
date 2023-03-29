@@ -5,7 +5,7 @@ functions in the BinaryTree file.
 '''
 
 
-from containers.BinaryTree import BinaryTree, Node
+from BinaryTree import BinaryTree, Node
 
 
 class BST(BinaryTree):
@@ -48,6 +48,31 @@ class BST(BinaryTree):
     def __iter__(self):
         for x in self.to_list('inorder'):
             yield x
+
+    def __eq__(self, t2):
+        '''
+        This method checks to see if the contents of self and t2 are equal.
+        The expression `a == b` desugars to `a.__eq__(b)`.
+
+        NOTE:
+        We only care about "semantic" equality,
+        and not "syntactic" equality.
+        That is, we do not care about the tree structure itself,
+        and only care about the contents of what the tree contains.
+
+        HINT:
+        Convert the contents of both trees into a sorted list,
+        then compare those sorted lists for equality.
+        '''
+        list1 = self.to_list('inorder')
+        list2 = t2.to_list('inorder')
+        if len(list1) != len(list2):
+            return False
+        else:
+            for i in range(len(list1)):
+                if list1[i] not in list2:
+                    return False
+            return True
 
     def is_bst_satisfied(self):
         '''
