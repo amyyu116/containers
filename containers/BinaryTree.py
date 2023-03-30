@@ -215,10 +215,7 @@ class BinaryTree():
         HINT:
         See how the __len__ method calls its helper staticmethod.
         '''
-        if self.root is None:
-            return -1
-        else:
-            return BinaryTree._height(self.root)
+        return BinaryTree._height(self.root)
 
     @staticmethod
     def _height(node):
@@ -233,15 +230,8 @@ class BinaryTree():
         return 1 (for the current node) plus the max of the left and right
         _heights calculated above
         '''
-        height = 0
-        left_height = 0
-        right_height = 0
         if node is None:
-            return 0
-        if node:
-            if node.left:
-                left_height = 1 + BinaryTree._height(node.left)
-            if node.right:
-                right_height = 1 + BinaryTree._height(node.right)
-            height += max(left_height, right_height)
-        return height
+            return -1
+        left_height = BinaryTree._height(node.left)
+        right_height = BinaryTree._height(node.right)
+        return 1 + max(left_height, right_height)
