@@ -5,7 +5,7 @@ functions in the BinaryTree file.
 '''
 
 
-from BinaryTree import BinaryTree, Node
+from containers.BinaryTree import BinaryTree, Node
 
 
 class BST(BinaryTree):

@@ -5,8 +5,8 @@ the BinaryTree and BST files,
 but there are fewer of them.
 '''
 
-from BinaryTree import BinaryTree, Node
-from BST import BST
+from containers.BinaryTree import BinaryTree, Node
+from containers.BST import BST
 
 
 class AVLTree(BST):
