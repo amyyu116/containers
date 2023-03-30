@@ -138,6 +138,10 @@ class AVLTree(BST):
             BST._insert(self.root, value)
         if AVLTree._is_avl_satisfied(self.root) is False:
             AVLTree._correct(self.root, value)
+            if value < self.root.value:
+                AVLTree._correct(self.root.left, value)
+            elif value > self.root.value:
+                AVLTree._correct(self.root.right, value)
         return
 
     @staticmethod
@@ -147,10 +151,8 @@ class AVLTree(BST):
         if AVLTree._is_avl_satisfied(node) is False:
             if AVLTree._balance_factor(node) in [-2, 2]:
                 AVLTree._rebalance(node)
-            if value < node.value:
-                AVLTree._correct(node.left, value)
-            if value > node.value:
-                AVLTree._correct(node.right, value)
+            AVLTree._correct(node.left, value)
+            AVLTree._correct(node.right, value)
         else:
             return
 
